@@ -8,7 +8,7 @@ local MESSAGE = "message"
 local AuthProviderReflector = BasePlugin:extend()
 
 function AuthProviderReflector:new()
-  AuthProviderReflector.super.new(self, "auth-providers-repo")
+  AuthProviderReflector.super.new(self, "auth-providers-util")
 end
 
 function AuthProviderReflector:access(conf)
