@@ -1,4 +1,4 @@
-package = "kong-plugin-auth-providers-repo"
+package = "kong-plugin-auth-providers-util"
 version = "0.1.0-1"
 -- The version '0.1.0' is the source code version, the trailing '1' is the version of this rockspec.
 -- whenever the source version changes, the rockspec should be reset to 1. The rockspec version is only
@@ -10,12 +10,12 @@ local pluginName = package:match("^kong%-plugin%-(.+)$")  -- "oauth2-social-logi
 supported_platforms = {"linux", "macosx"}
 source = {
   -- these are initially not required to make it work
-  url = "git://github.com/shiva2991/kong-plugin-auth-providers-repo",
-  tag = "0.1.0"
+  url = "git://github.com/shiva2991/kong-plugin-auth-providers-util",
+  tag = "v0.0"
 }
 
 description = {
-  summary = "A plugin mandatorily used by my other authentication plugins.",
+  summary = "A plugin which provide common functionality shared other authentication plugins.",
   homepage = "http://rahogata.co.in",
   license = "MIT"
 }
