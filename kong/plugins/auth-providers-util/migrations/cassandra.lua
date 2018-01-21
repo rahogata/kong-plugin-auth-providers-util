@@ -5,7 +5,10 @@ return {
       CREATE TABLE IF NOT EXISTS auth_providers(
         id uuid,
         name text,
-        type text,
+        provider_type text,
+        uri text,
+        method varchar(15),
+        response_type varchar(20),
         config json,
         created_at timestamp,
         PRIMARY KEY(id)

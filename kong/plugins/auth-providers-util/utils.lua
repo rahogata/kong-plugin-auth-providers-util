@@ -2,11 +2,11 @@ local singletons = require "kong.singletons"
 
 local _M = {}
 
-function _M.get_providers(auth_type)
+function _M.get_providers(provider_type)
   local providers = {}
-  local provider_entities = singletons.dao.auth_providers:find_all({ type = auth_type })
+  local provider_entities = singletons.dao.auth_providers:find_all({ provider_type = provider_type })
   for i, v in ipairs(provider_entities) do
-    table.insert(providers, { name = v.name, method = "GET", uri = "/oauth2/authorize/" .. v.name, response_type = "REDIRECT" })
+    table.insert(providers, { name = v.name, method = v.method, uri = v.uri .. v.name, response_type = v.response_type })
   end
   return providers
 end
@@ -45,12 +45,12 @@ function _M.load_new_session_state(session)
   return session
 end
 
-function _M.load_provider(provider_name)
-   local providers, err = singletons.dao.auth_providers:find_all({ name = provider_name })
+function _M.load_provider(provider_name, provider_type)
+   local provider, err = singletons.dao.auth_providers:find_all({ name = provider_name, provider_type = provider_type })[1]
    if err then
       return nil, err
     end
-    return providers[1]
+    return provider
 end
 
 return _M

@@ -11,6 +11,6 @@ end
 return {
     no_consumer = true,
     fields = {
-      anonymous = { required = false, type = "string", default = "", func = check_user }
+      provider_plugin = { required = false, type = "string", enum = { "AUTH_PLUGIN" }, default = "AUTH_PLUGIN" }
     }
 }
